@@ -1,0 +1,8 @@
+.venv
+.idea
+.mlflow/*
+
+_*
+*test*
+*.yaml
+*.xml
