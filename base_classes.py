@@ -37,17 +37,18 @@ class BaseGame(ABC):
 
 class BaseAgent(ABC):
     """
-    Abstract base class for reinforcement learning agents.
+    Abstract base class for reinforcement learning agents. Should be subclassed for each agent.
     """
     def __init__(self):
         self.batch_size: int = 64
-        self.initial_eps: float
-        self.final_eps: float
-        self.epsilon: float
-        self.eps_term: float
-        self.gamma: float   # discount factor for Q-learning
-        self.tau: float  # factor for soft update of network weights
-        self.net_update_freq: int  # soft update frequency
+        self.initial_eps: float = 0.9
+        self.final_eps: float = 0.05
+        self.epsilon: float = self.initial_eps
+        self.eps_term: int = 10_000
+        self.lr: float = 0.9
+        self.gamma: float = 0.99  # discount factor for Q-learning
+        self.tau: float = 0.95  # factor for soft update of network weights
+        self.net_update_freq: int = 5  # soft update frequency
         self.q_local: Module
         self.q_target: Module
         self.optimizer: Optimizer
