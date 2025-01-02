@@ -8,10 +8,10 @@ class Factory:
     is discarded onto the central market on the Market.
 
     Attributes:
-        pile (np.array): a numpy array representing 4 mosaic tiles
+        pile (np.array): a numpy array representing 4 mosaic tiles. An empty pile is represented by an array of zeros.
     """
     def __init__(self):
-        self.pile: np.array or None = np.random.randint(1, 6, 4, dtype=np.int8)
+        self.pile: np.array = np.random.randint(1, 6, 4, dtype=np.int8)
 
     def get_tiles(self, tile_type: int) -> tuple[np.array, np.array]:
         """
@@ -31,7 +31,7 @@ class Factory:
 
         mask = self.pile == tile_type
         draw, discard = self.pile[mask], self.pile[~mask]
-        self.pile = None
+        self.pile = np.zeros(4, dtype=np.int8)
 
         return draw, discard
 
