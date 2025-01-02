@@ -178,8 +178,7 @@ class Player:
         for val in range(size):
             zeros = np.zeros([size, size], dtype=np.int8)
             np.fill_diagonal(zeros, val + 1)
-            temp = np.roll(zeros, val, 0)
-            mosaic += temp
+            mosaic += np.roll(zeros, val, 0)
 
         return mosaic
 
